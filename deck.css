@@ -1,0 +1,113 @@
+  /* ---- Loading the fonts and math styling (do not change) ---- */
+  @import url('vendor/google-sans-flex.css');
+  @import url('vendor/katex/katex.min.css');
+
+  /* ---- Whole presentation ---- */
+  /* Font used everywhere. Must be a font that exists in vendor/fonts. Arial is the safety net. */
+  body { font-family: 'Google Sans Flex', Arial, Helvetica, sans-serif; }
+
+  /* Hide the raw slide source so it doesn't flash before remark builds the slides */
+  #source { display: none; }
+
+  /* ---- Slide headings: the "# Text" line at the top of each slide ---- */
+  .remark-slide-content h1 {
+    font-weight: normal;              /* normal = thin, bold = thick */
+    font-size: 30px;                  /* HEADING SIZE on all slides (except title slide) */
+    margin: 0 0 5px;                 /* space around heading: top right-left bottom */
+    padding-bottom: 6px;             /* gap between heading text and the line below it */
+    border-bottom: 1px solid #333;    /* line under heading; set to 0 to remove, change #333 for colour */
+  }
+
+  /* ---- Normal slide body ---- */
+  .remark-slide-content {
+    font-size: 28px;                  /* BODY TEXT SIZE on all slides */
+    padding: 20px 60px;               /* empty margin inside slide: top/bottom  left/right */
+  }
+  .remark-slide-content p { margin: 0 0 14px; }   /* space below each paragraph */
+
+  /* ---- Title slide (first slide, wrapped in .title[ ... ]) ---- */
+  .deck-title .remark-slide-number { display: none; }   /* no page number on the title slide */
+  .title { text-align: center; }      /* center everything; use left to left-align */
+  .title h1 {
+    border: 0;                        /* no line under the title */
+    font-size: 40px;                  /* TITLE SIZE */
+    margin-top: 90px;                 /* space above the title (moves everything down) */
+  }
+  .name { font-size: 40px; margin-top: 10px; }                  /* your name: size, space above */
+  .aff  { font-size: 22px; margin-top: 10px; color: #444; }     /* affiliation: size, space above, grey colour */
+  .logos { margin-top: 50px; }                                  /* space above the logos */
+  .logos img {
+    width: 330px;                     /* LOGO SIZE (width of each logo) */
+    margin: 0 10px;                   /* space left/right of each logo */
+    display: inline-block;            /* logos sit side by side */
+    vertical-align: middle;           /* keeps logos lined up with each other */
+  }
+
+  /* ---- Pictures and videos: image(file.png) / video(file.mp4) -- centered, never wider than the slide.
+     Written with :where() so the logo and grid-cell rules below can still override it. ---- */
+  :where(.remark-slide-content) img,
+  :where(.remark-slide-content) video {
+    max-width: 100%;                  /* never wider than the slide */
+    max-height: 430px;                /* MAX PICTURE/VIDEO HEIGHT; increase for bigger ones */
+    display: block; margin: 0 auto;   /* centers it */
+  }
+  :where(.remark-slide-content) video { background: #000; }
+
+  /* ---- Grid (.grid[RxC ... ] with cells separated by a line "===") ---- also used for columns: .grid[1x3 ...] ---- */
+  .grid {
+    --grid-h: 500px;                  /* TOTAL GRID HEIGHT; lower it if you add text above/below the grid */
+    --pad: 16px;                      /* space between a cell's content and the lines around it */
+    --line: 2px solid #333;           /* LINES (only where you ask for them): thickness and colour; set to "0 solid #333" to remove all lines */
+    --line-v: var(--line);            /* vertical lines only (between columns); override alone to remove them */
+    --line-h: var(--line);            /* horizontal lines only (between rows) */
+    display: grid; gap: 0; height: var(--grid-h); margin-top: 10px;
+    grid-template-columns: repeat(var(--cols, 1), minmax(0, 1fr));
+    grid-template-rows: repeat(var(--rows, 1), minmax(0, 1fr));
+  }
+  .cell {
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    min-width: 0; min-height: 0; overflow: hidden; text-align: center;
+    box-sizing: border-box; padding: var(--pad);
+    font-size: 25px;                  /* TEXT SIZE inside grid cells */
+  }
+  .cell.vline { border-right: var(--line-v); }    /* line on the right of a cell: end its text with  |  */
+  .cell.hline { border-bottom: var(--line-h); }   /* line below a cell: end its text with  __  */
+  .cell p { margin: 0; }
+  .cell h3 { margin: 0 0 8px; font-weight: normal; font-size: 30px }   /* cell headings ("### Text") */
+  .cell img {                         /* every picture shrinks to fit its own cell */
+    max-width: 100%;
+    max-height: calc(var(--grid-h) / var(--rows, 1) - 2 * var(--pad));
+    object-fit: contain;
+  }
+
+  .cell video {                       /* every video shrinks to fit its own cell */
+    max-width: 100%;
+    max-height: calc(var(--grid-h) / var(--rows, 1) - 2 * var(--pad));
+    background: #000;
+  }
+
+  /* ---- Closing slide (class: center, middle  +  .thanks[Thank you]) ---- */
+  .thanks { font-size: 64px; }        /* SIZE of the closing text */
+
+  /* ---- Math placed by the script below ---- */
+  .math-render.display { display: block; text-align: center; margin: 0.4em 0; }
+
+  /* ---- PRINT TO PDF ----
+     The page size is set by the script at the bottom from the RATIO setting, so changing the
+     ratio (e.g. '4:3') needs NO change here. The numbers below are only a fallback for 16:9.
+     In Chrome's print dialog use: Destination = Save as PDF, Margins = None, Scale = 100%. */
+  @page { size: 1210px 681px; margin: 0; }
+  @media print {
+    html, body { margin: 0; padding: 0; background: #fff; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }   /* keep backgrounds/colours */
+    /* remark positions/scales slides for the screen; undo that so each slide fills its page exactly */
+    .remark-slide-container { position: relative !important; display: block !important;
+      width: var(--slide-w, 1210px) !important; height: var(--slide-h, 681px) !important;
+      top: 0 !important; left: 0 !important; margin: 0 !important; overflow: hidden !important;
+      page-break-after: always; break-after: page; }
+    .remark-slide-container:last-child { page-break-after: auto; break-after: auto; }   /* no blank last page */
+    .remark-slide-scaler { transform: none !important; -webkit-transform: none !important;
+      position: absolute !important; top: 0 !important; left: 0 !important;
+      width: var(--slide-w, 1210px) !important; height: var(--slide-h, 681px) !important; }
+    #preflight, #load-error { display: none !important; }
+  }

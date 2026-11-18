@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Presentation Title</title>
+<!-- ============ STYLE: lives in deck.css (open it to change sizes, spacing, colours) ============ -->
+<link rel="stylesheet" href="deck.css">
+</head>
+<body>
+<noscript>This presentation needs JavaScript. Please enable it and reload.</noscript>
+<!-- ============ YOUR SLIDES: edit only between the textarea tags ============
+  - Slides are separated by a line with three dashes:  ---
+  - "# Text" makes a heading.   "- Text" makes a bullet.
+  - image(images/file.png) inserts a picture; image(images/file.png, 0.5) shows it at half the width.
+  - video(videos/file.mp4) inserts a video player; video(videos/file.mp4, 0.5) is half width.
+  - .grid[RxC ... ] makes a grid of R rows and C columns; cells are separated by a line ===
+    End a cell's text with | for a vertical line on its right, with __ for a line below it (or both).
+  - $$ ... $$ makes a displayed equation; $ ... $ makes an inline one.
+  - A single line break inside a paragraph does NOT start a new line. For a new line, leave a
+    blank line, end the line with two spaces, or use a "- " bullet list.
+  - Speaker notes: put a line "???" in a slide; everything after it is notes.
+  - Never write </textarea> in your slides, and never put a line starting with --- inside a code block.
+  - BEFORE A TALK: open this file with  ?check  at the end of the address
+    (e.g. .../example_slide.html?check). It steps through every slide and lists overflowing content,
+    broken images or videos, and math errors.
+=========================================================================== -->
+<textarea id="source">
+class: deck-title
+count: false
+
+.title[
+# Your Presentation Title
+
+.name[Your Name]
+
+.aff[Your Department, Your University]
+
+.logos[image(images/logo-placeholder-1.svg) image(images/logo-placeholder-2.svg)]
+]
+
+???
+Speaker notes for the title slide. Press P to open the presenter view and see these.
+
+---
+
+# Welcome
+
+This file (`example_slide.html`) is your presentation. To make your own talk:
+
+- Open `example_slide.html` in a text editor
+- Replace the text between the `textarea` tags
+- Save, then reload the page in your browser
+
+Slides are separated by a line of three dashes. A heading is a line starting with `#`.
+
+No installation and no internet needed: it all works offline.
+
+???
+Notes can be added to any slide. This slide's notes are only visible in presenter view.
+
+---
+
+# Keyboard shortcuts
+
+- **Left / Right arrows** (or Space): previous / next slide
+- **C**: make a clone of the presentation in a new window (put it on the projector)
+- **P**: presenter mode, with notes, a timer and the next slide
+- **L**: turn the laser pointer on or off (it follows your mouse)
+- **F**: full screen
+- **H** or **?**: list of all shortcuts
+
+???
+Typical talk setup: press C, drag the clone window to the projector and make it full screen,
+then press P in your own window. The laser pointer shows up in the clone too.
+
+---
+
+# Speaker notes
+
+Notes are text only you can see, in presenter mode (press **P**).
+
+- Put a line containing only `???` in a slide
+- Everything below that line is a note, for that slide only
+
+This slide has notes. Press **P** to see them.
+
+???
+These are the speaker notes for this slide.
+- They can have several lines
+- and bullets
+
+---
+
+# Images
+
+image(images/example-plot.svg, 0.5)
+
+`image(images/file.png)` shows a picture. Add a number to resize it, e.g. `image(images/file.png, 0.5)` for half the width.
+
+---
+
+# Equations
+
+Use `$$ ... $$` for a displayed equation:
+
+$$
+\frac{\partial u}{\partial t} + u \frac{\partial u}{\partial x} = -\frac{1}{\rho}\frac{\partial p}{\partial x}
+$$
+
+Inline math works too: $E = mc^2$ and $x_1 + y_2$. Write them with single dollar signs.
+
+---
+
+# Grid of images, text and equations
+
+.grid[2x2
+image(images/example-plot.svg)
+===
+Any text works too:
+- bullet one
+- bullet two
+===
+$$ \kappa = \frac{1}{2}\frac{d\sigma^2}{dt} $$
+===
+image(images/example-plot-2.svg)
+]
+
+???
+.grid[RxC ...] means R rows and C columns, filled row by row. Separate cells with a line containing only three equals signs.
+A cell can be a picture, text, an equation or a mix. Two separator lines in a row leave a cell empty.
+
+---
+
+# Columns and lines
+
+.grid[1x3
+### First
+- Some text
+- and more text
+|
+===
+### Second
+Lines are optional. End a cell with a vertical bar for a line on its right
+|
+===
+### Third
+End with two underscores for a line below
+__
+]
+
+---
+
+# Videos
+
+Videos work just like images:
+
+- `video(videos/my_talk.mp4)` shows a video player
+- `video(videos/my_talk.mp4, 0.5)` shows it at half the width
+
+Put your video files in the `videos` folder. Videos also work inside grid cells.
+
+---
+
+# Before your talk
+
+- Add `?check` to the address, e.g. `example_slide.html?check`, to find overflowing slides, broken images and math errors
+- To make a PDF: print the page (Ctrl+P), choose *Save as PDF*, margins *None*, scale *100%*
+- To share the talk, upload the whole folder to your website and send the link to `example_slide.html`
+
+---
+
+class: center, middle
+
+.thanks[Thank you
+
+your.email@example.com
+]
+
+</textarea>
+
+<!-- ============ ENGINE: lives in deck.js (do not edit) ============ -->
+<script>
+  /* SETTING: slide shape. '16:9', '4:3', '16:10', ... Printing adapts automatically. */
+  window.RATIO = '16:9';
+</script>
+<script src="vendor/remark-latest.min.js"></script>
+<script src="vendor/katex/katex.min.js"></script>
+<script src="deck.js"></script>
+<script src="plugin/mouse-pointer/mouse-pointer.js"></script>
+<script src="plugin/video-sync/video-sync.js"></script>
+</body>
+</html>

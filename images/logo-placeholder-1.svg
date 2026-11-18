@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 110" width="330" height="110">
+  <rect x="2" y="2" width="326" height="106" rx="14" fill="#f2f4f7" stroke="#8a94a6" stroke-width="3" stroke-dasharray="10 6"/>
+  <circle cx="58" cy="55" r="28" fill="#8a94a6"/>
+  <text x="58" y="64" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="bold" fill="#fff" text-anchor="middle">1</text>
+  <text x="104" y="52" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#4a5568">YOUR LOGO</text>
+  <text x="104" y="80" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#8a94a6">images/logo-placeholder-1.svg</text>
+</svg>
